@@ -1,0 +1,44 @@
+<html>
+    <head><title>Metronomo</title></head>
+    <body>
+    <h1>40 bpm</h1>
+        <input type="range" min="40" max"218" value="40" id="bpm" />
+        <audio src="clap.wav"></audio>
+        <button id="play">Play</button>
+        <script>
+            const bpm = document.getElementById('bpm')
+            const h1 = document.querySelector('h1')
+            const play = document.getElementById('bpm')
+            const audio = document.querySelector('audio')
+
+            let currentBpm = 40
+            let isPlaying = false
+            let timer = null
+
+            fuction tick(){
+                audio.currentTime = 0
+                audio.play()
+            }
+
+            bpm.addEventListener('change', fuction(){
+                h1.innerHTML = this.value + ' bpm'
+                currentBpm = parseInt(this.value)
+                if(isPlaying){
+                    clearInterval(timer)
+                    timer = setInterval(tick, (60*1000)/currentBpm)
+                }
+            })
+            play.addEventListener('click', fuction(){
+                if(isPlaying){
+                    play.innerHTML = 'Play'
+                    clearInterval(timer)
+                }else{
+                    play.innerHTML = 'Stop'
+                    tick()
+                    timer = setInterval(tick, (60*1000)/currentBpm)
+                }
+                isPlaying = !isPlaying
+            })
+        </script>
+    </body>
+</head>
