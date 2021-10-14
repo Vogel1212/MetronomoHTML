@@ -28,6 +28,7 @@
                     timer = setInterval(tick, (60*1000)/currentBpm)
                 }
             })
+
             play.addEventListener('click', fuction(){
                 if(isPlaying){
                     play.innerHTML = 'Play'
@@ -36,6 +37,7 @@
                 {
                     play.innerHTML = 'Stop'
                     tick()
+                    clearInterval(timer)
                     timer = setInterval(tick, (60*1000)/currentBpm)
                 }
                 isPlaying = !isPlaying
