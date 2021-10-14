@@ -32,7 +32,8 @@
                 if(isPlaying){
                     play.innerHTML = 'Play'
                     clearInterval(timer)
-                }else{
+                }else
+                {
                     play.innerHTML = 'Stop'
                     tick()
                     timer = setInterval(tick, (60*1000)/currentBpm)
